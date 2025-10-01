@@ -1,30 +1,60 @@
-# 📌 User Submissions API
+# 📋 User Submission Form Application
 
-This backend service provides endpoints for handling user form submissions and retrieving stored submissions.  
-It validates email uniqueness before storing data.
+This project is a **full-stack application** that allows users to submit their details through a frontend form, with backend validation and database storage.
+
+It demonstrates:
+
+* Form input handling (name, email, skills, location).
+* **Email uniqueness validation** (handled by backend).
+* Success/error handling in the frontend.
+* REST API integration between frontend and backend.
 
 ---
 
-## 🚀 Overview
+## 🚀 Project Structure
 
-- **Submit Form (POST /submit-form)** → Accepts user details and stores them in the database (with email uniqueness check).  
-- **Fetch Submissions (GET /submissions)** → Retrieves all stored submissions.
+```
+app/
+ ├── index.html        # Frontend form UI
+ ├── style.css         # Styling for the form
+ ├── script.js         # Handles form submission & API calls
+ └── (Backend handled separately)
+```
 
 ---
 
-## 📂 Endpoints
+## 🎨 Frontend (Form Application)
 
-### 1️⃣ Submit Form
+* **Tech Stack**: HTML, CSS, JavaScript
+* **Features**:
 
-**Endpoint:**  
-```
-POST /submit-form
-```
+  * Collects user data: `name`, `email`, `location`, `skills`.
+  * Sends data to backend API (`/submit-form`).
+  * Displays success/error messages dynamically.
+  * Validates that fields are not empty before submission.
 
-**Purpose:**  
-Receive user data and store it in the database. The email must be unique.
+---
 
-**Request Body Example:**
+## ⚙️ Backend (API Service)
+
+The backend handles **storage, validation, and retrieval** of submissions.
+Refer to [User-Form API Documentation](./User-Form%20API%20Documentation.pdf) for detailed specs.
+
+### Available Endpoints
+
+#### 1️⃣ Submit Form
+
+* **Endpoint**: `POST /submit-form`
+* **Purpose**: Accept user data and store it in the database.
+* **Validations**:
+
+  * `name`: required, string
+  * `location`: required, string
+  * `email`: required, must be unique
+  * `skills`: required, array of strings
+
+**Request Example**
+
 ```json
 {
   "name": "Alice Johnson",
@@ -34,46 +64,28 @@ Receive user data and store it in the database. The email must be unique.
 }
 ```
 
-**Validation Rules:**
-- `name` → string, required  
-- `location` → string, required  
-- `email` → string, required, **must be unique**  
-- `skills` → array of strings, required  
+**Response Examples**
+✅ Success:
 
-**Success Response (200):**
 ```json
-{
-  "message": "Form submitted successfully!"
-}
+{ "message": "Form submitted successfully!" }
 ```
 
-**Error Responses:**
-- Email already exists:
+❌ Error (Email exists):
+
 ```json
-{
-  "error": "Email already existed"
-}
-```
-- Invalid request format (missing fields):
-```json
-{
-  "error": "Invalid request data"
-}
+{ "error": "Email already existed" }
 ```
 
 ---
 
-### 2️⃣ Fetch Submissions
+#### 2️⃣ Fetch Submissions
 
-**Endpoint:**  
-```
-GET /submissions
-```
+* **Endpoint**: `GET /submissions`
+* **Purpose**: Retrieve all stored submissions.
 
-**Purpose:**  
-Retrieve all stored submissions.
+**Response Example**
 
-**Success Response Example (200):**
 ```json
 [
   {
@@ -91,33 +103,39 @@ Retrieve all stored submissions.
 ]
 ```
 
-**Error Response Example (500):**
-```json
-{
-  "error": "Unable to fetch submissions"
-}
-```
+---
+
+## 🔗 Frontend ↔ Backend Integration
+
+* Frontend sends **POST** requests to `/submit-form`.
+* Backend checks email uniqueness and responds with success/error.
+* Frontend displays result messages accordingly.
+* Users can fetch all submissions via **GET** `/submissions`.
 
 ---
 
-## ⚙️ Notes for Frontend Team
+## 🛠️ Setup & Usage
 
-- All requests must be sent in **JSON format**.  
-- Required header:
-  ```
-  Content-Type: application/json
-  ```
-- Backend enforces **email uniqueness** → frontend only needs to handle error messages.  
-- Success messages only return confirmation, not the submitted data.
+### Frontend
 
----
+1. Open `index.html` in your browser.
+2. Fill in details and click **Submit**.
+3. Messages will display based on backend response.
 
-## 📖 Summary
+### Backend
 
-- **POST /submit-form** → Submit user data (with email uniqueness check).  
-- **GET /submissions** → Fetch all stored submissions.  
-- Responses are simple JSON with success or error messages for easy frontend integration.  
+1. Run backend server (FastAPI/Node/etc. depending on implementation).
+2. Ensure API is accessible at the expected base URL.
+3. Connect with database for persistence.
 
 ---
 
-✅ Ready for integration with frontend clients.
+## ✅ Summary
+
+* **Frontend**: Collects and sends user data.
+* **Backend**: Validates, stores, and retrieves submissions.
+* **Key Rule**: Email must be unique.
+* **Techs Used**: HTML, CSS, JS (Frontend) + REST API (Backend).
+
+
+Do you want me to also **add step-by-step setup instructions for backend (FastAPI/Node)** or keep it **generic** since backend team handles it?
