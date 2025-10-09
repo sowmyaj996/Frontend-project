@@ -8,10 +8,12 @@ document.getElementById("submitForm").addEventListener("submit", async function 
   const location = document.getElementById("location").value;
 
   const emailError = document.getElementById("emailError");
+  const skillsError = document.getElementById("skillsError");
   const responseMsg = document.getElementById("responseMsg");
 
   // Reset messages
   emailError.textContent = "";
+  skillsError.textContent = "";
   responseMsg.textContent = "";
 
   try {
@@ -26,9 +28,13 @@ document.getElementById("submitForm").addEventListener("submit", async function 
 
     // const data = await res.json();
 
-    if (res.status === 400) {  
+    if (res.status === 409) {  
       // Email already exists
       emailError.textContent = "Email already exists!";
+      skillsError.textContent = "Skills already exists!";
+      emailError.style.color = "red";
+      skillsError.style.color = "red";
+      
     } else if (res.ok) {  
       // Success
       responseMsg.style.color = "green";
