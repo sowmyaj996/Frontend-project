@@ -26,7 +26,7 @@ document.getElementById("submitForm").addEventListener("submit", async function 
 
     // const data = await res.json();
 
-    if (res.status === 409) {  
+    if (res.status === 400) {  
       // Email already exists
       emailError.textContent = "Email already exists!";
     } else if (res.ok) {  
@@ -37,7 +37,7 @@ document.getElementById("submitForm").addEventListener("submit", async function 
     } else {  
       // General error
       responseMsg.style.color = "red";
-      responseMsg.textContent = "Details not entered!";
+      responseMsg.textContent = "Details are invalid!";
     }
   } catch (err) {
     responseMsg.style.color = "red";
