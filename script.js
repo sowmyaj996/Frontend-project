@@ -24,9 +24,7 @@ document.getElementById("submitForm").addEventListener("submit", async function 
       body: JSON.stringify({ username:name, email, skills: [skills], location })
     });
 
-
-
-    const data = await res.json();
+    // const data = await res.json();
 
     if (res.status === 409) {  
       // Email already exists
