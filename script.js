@@ -46,11 +46,11 @@ document.getElementById("submitForm").addEventListener("submit", async function 
   }
 
 });
-const getDataButton = document.getElementById("getData").addEventListener("click", async function() {
-  try {
-    const res = await fetch("https://backend-team-ydxe.onrender.com/submissions").then(data => data.json()).then((completedata) => {
-      console.log(completedata);
-    });
-  } catch (err) {
-    console.error(err);
-  }})
+// const getDataButton = document.getElementById("getData").addEventListener("click", async function() {
+//   try {
+//     const res = await fetch("https://backend-team-ydxe.onrender.com/submissions").then(data => data.json()).then((completedata) => {
+//       console.log(completedata);
+//     });
+//   } catch (err) {
+//     console.error(err);
+//   }})
