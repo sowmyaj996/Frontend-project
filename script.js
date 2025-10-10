@@ -18,7 +18,7 @@ document.getElementById("submitForm").addEventListener("submit", async function 
 
   try {
     // Send data to backend API (replace URL with backend endpoint)
-    const res = await fetch("https://backend-team-ydxe.onrender.com/submit-form", {
+    const res = await fetch("https://backend-team-wwmy.onrender.com//submit-form", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -54,7 +54,7 @@ document.getElementById("submitForm").addEventListener("submit", async function 
 });
 // const getDataButton = document.getElementById("getData").addEventListener("click", async function() {
 //   try {
-//     const res = await fetch("https://backend-team-ydxe.onrender.com/submissions").then(data => data.json()).then((completedata) => {
+//     const res = await fetch("https://backend-team-wwmy.onrender.com/submissions").then(data => data.json()).then((completedata) => {
 //       console.log(completedata);
 //     });
 //   } catch (err) {
