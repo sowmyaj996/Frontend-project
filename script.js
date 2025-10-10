@@ -18,7 +18,7 @@ document.getElementById("submitForm").addEventListener("submit", async function 
 
   try {
     // Send data to backend API (replace URL with backend endpoint)
-    const res = await fetch("https://backend-team-wwmy.onrender.com//submit-form", {
+    const res = await fetch("https://backend-team-wwmy.onrender.com/submit-form", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
